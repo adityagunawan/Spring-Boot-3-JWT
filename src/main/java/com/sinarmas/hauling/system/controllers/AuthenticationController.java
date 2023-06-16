@@ -1,9 +1,13 @@
-package com.sinarmas.hauling.system.auth;
+package com.sinarmas.hauling.system.controllers;
 
-import com.sinarmas.hauling.system.servicies.AuthenticationServiceImpl;
+import com.sinarmas.hauling.system.pojo.AuthenticationRequest;
+import com.sinarmas.hauling.system.pojo.AuthenticationResponse;
+import com.sinarmas.hauling.system.pojo.RegisterRequest;
+import com.sinarmas.hauling.system.servicies.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +21,8 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
-  private final AuthenticationServiceImpl service;
+  @Autowired
+  private final AuthenticationService service;
 
   @PostMapping("/register")
   public ResponseEntity<AuthenticationResponse> register(

@@ -1,4 +1,4 @@
-package com.sinarmas.hauling.system.auth;
+package com.sinarmas.hauling.system.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

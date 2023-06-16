@@ -1,4 +1,4 @@
-package com.sinarmas.hauling.system.demo;
+package com.sinarmas.hauling.system.controllers;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.ResponseEntity;

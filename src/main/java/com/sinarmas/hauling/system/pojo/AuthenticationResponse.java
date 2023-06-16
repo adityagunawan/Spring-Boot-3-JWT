@@ -1,4 +1,4 @@
-package com.sinarmas.hauling.system.auth;
+package com.sinarmas.hauling.system.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

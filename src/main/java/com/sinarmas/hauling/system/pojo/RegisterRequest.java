@@ -1,4 +1,4 @@
-package com.sinarmas.hauling.system.auth;
+package com.sinarmas.hauling.system.pojo;
 
 import com.sinarmas.hauling.system.enums.Role;
 import lombok.AllArgsConstructor;

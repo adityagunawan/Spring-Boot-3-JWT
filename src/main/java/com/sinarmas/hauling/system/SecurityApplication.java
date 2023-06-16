@@ -1,7 +1,7 @@
 package com.sinarmas.hauling.system;
 
 import com.sinarmas.hauling.system.servicies.AuthenticationServiceImpl;
-import com.sinarmas.hauling.system.auth.RegisterRequest;
+import com.sinarmas.hauling.system.pojo.RegisterRequest;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,19 +1,18 @@
 package com.sinarmas.hauling.system.servicies;
 
-import com.sinarmas.hauling.system.auth.AuthenticationRequest;
-import com.sinarmas.hauling.system.auth.AuthenticationResponse;
-import com.sinarmas.hauling.system.auth.RegisterRequest;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sinarmas.hauling.system.pojo.AuthenticationRequest;
+import com.sinarmas.hauling.system.pojo.AuthenticationResponse;
+import com.sinarmas.hauling.system.pojo.RegisterRequest;
 import com.sinarmas.hauling.system.config.JwtService;
+import com.sinarmas.hauling.system.models.User;
+import com.sinarmas.hauling.system.repositories.UserRepository;
 import com.sinarmas.hauling.system.token.Token;
 import com.sinarmas.hauling.system.token.TokenRepository;
 import com.sinarmas.hauling.system.token.TokenType;
-import com.sinarmas.hauling.system.models.User;
-import com.sinarmas.hauling.system.repositories.UserRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,13 +23,14 @@ import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
-public class AuthenticationServiceImpl {
+public class AuthenticationServiceImpl implements AuthenticationService{
   private final UserRepository repository;
   private final TokenRepository tokenRepository;
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
 
+  @Override
   public AuthenticationResponse register(RegisterRequest request) {
     var user = User.builder()
         .firstname(request.getFirstname())
@@ -49,6 +49,7 @@ public class AuthenticationServiceImpl {
         .build();
   }
 
+  @Override
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
@@ -90,6 +91,7 @@ public class AuthenticationServiceImpl {
     tokenRepository.saveAll(validUserTokens);
   }
 
+  @Override
   public void refreshToken(
           HttpServletRequest request,
           HttpServletResponse response
